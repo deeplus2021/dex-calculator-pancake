@@ -65,7 +65,7 @@ contract PancakeCal is Ownable {
         uint256 current,
         uint256 startReserve,
         uint256 endReserve,
-        uint256 decimals,
+        uint256 decimals0,
         string memory symbol0,
         string memory symbol1
     ) {
@@ -82,7 +82,7 @@ contract PancakeCal is Ownable {
             startPrice < endPrice, "Price range values are invalid");
 
         // get the decimals and symbols of pair tokens
-        uint256 decimals0 = IERC20(token0).decimals();
+        decimals0 = IERC20(token0).decimals();
         uint256 decimals1 = IERC20(token1).decimals();
         symbol0 = IERC20(token0).symbol();
         symbol1 = IERC20(token1).symbol();
@@ -92,12 +92,10 @@ contract PancakeCal is Ownable {
         uint256 k = reserve0 * reserve1;
         if (rangeType == 0) {
             current = reserve0;
-            decimals = decimals0;
         } else {
             current = reserve1;
-            decimals = decimals1;
 
-            (decimals1, decimals0) = (decimals0, decimals1);
+            (decimals0, decimals1) = (decimals1, decimals0);
         }
 
         startReserve = k * DENOMINATOR * (10 ** decimals0) / (startPrice * (10 ** decimals1));
