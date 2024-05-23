@@ -92,6 +92,7 @@ contract PancakeCal is Ownable {
         uint256 k = startReserve * endReserve;
         if (rangeType == 0) {
             current = startReserve;
+            decimals = decimals0;
         } else {
             current = endReserve;
             decimals = decimals1;
