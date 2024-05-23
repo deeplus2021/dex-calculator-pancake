@@ -16,7 +16,7 @@ import './utils/Common.sol';
  */
 contract PancakeCal is Ownable {
     // value for handling fixed point
-    uint256 public DENOMINATOR = 10 ** 8;
+    uint256 public DENOMINATOR = 10 ** 18;
 
     // public contract for pancakeswap factory & router
     IPancakeFactory public pancakeFactory;
