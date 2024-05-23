@@ -16,7 +16,7 @@ import './utils/Common.sol';
  */
 contract PancakeCal is Ownable {
     // value for handling fixed point
-    uint256 public DENOMINATOR = 10 ** 18;
+    uint256 public DENOMINATOR = 10 ** 15;
 
     // public contract for pancakeswap factory & router
     IPancakeFactory public pancakeFactory;
@@ -98,10 +98,10 @@ contract PancakeCal is Ownable {
             decimals0 = decimals;
         }
 
-        startReserve = reserve0 * reserve1 * DENOMINATOR * (10 ** decimals0) / (startPrice * (10 ** decimals1));
+        startReserve = reserve0 * reserve1 * DENOMINATOR / startPrice  * (10 ** decimals0) / (10 ** decimals1);
         startReserve = sqrt(startReserve);
 
-        endReserve = reserve0 * reserve1 * DENOMINATOR * (10 ** decimals0) / (endPrice * (10 ** decimals1));
+        endReserve = reserve0 * reserve1 * DENOMINATOR / endPrice  * (10 ** decimals0) / (10 ** decimals1);
         endReserve = sqrt(endReserve);
     }
 
