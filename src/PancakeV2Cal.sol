@@ -93,7 +93,6 @@ contract PancakeCal is Ownable {
             current = reserve0;
         } else {
             current = reserve1;
-
             decimals = decimals1;
             decimals1 = decimals0;
             decimals0 = decimals;
